@@ -19,7 +19,7 @@ class data:
 
         self.mode = IDLE
         
-
+#Richard
 Richard2 = Robot(auto_start=True)
 Data = data()
 
