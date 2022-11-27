@@ -8,8 +8,8 @@ import music
 def forward_calib_marker():
     print("Starting Forward Cal")
 
-    for power_level in range(10):
-        power = (power_level + 1) / 10
+    for power_level in range(20):
+        power = (power_level + 1) / 20
     
         constants.forward_power = 0.3
         x,y,b = tracking.get_position()
@@ -20,8 +20,7 @@ def forward_calib_marker():
         starting_position = [x,y]
 
         constants.forward_power = power
-        movement.drive_forward(1)
-        
+        movement.drive_forward(2)
         x,y,b = tracking.get_position()
 
         distance = (starting_position[0] - x)**2 + (starting_position[1] - y)**2
@@ -30,14 +29,17 @@ def forward_calib_marker():
         print("Forward Cal, Power:",power,"Distance:",distance)
 
         constants.backward_power = power
-        movement.drive_backward(1)
+        movement.drive_backward(2)
     print()
 
 def forward_calib(t):
     music.tune1()
+    saved_power = constants.forward_power
     for power_level in range(10):
         power = (power_level + 1) / 10
+        constants.forward_power = power
         movement.drive_forward(t)
         time.sleep(6)
+    constants.forward_power = saved_power
 
 
