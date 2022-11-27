@@ -22,7 +22,7 @@ class data:
 gold_height = (255 / 2)
 bronze_height = (110 / 2)
 
-Richard = Robot(auto_start=True, verbose=True)
+Richard = Robot(auto_start=True)
 Data = data()
 
 #io_board = Richard.ruggeduino
